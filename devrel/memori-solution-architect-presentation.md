@@ -99,7 +99,7 @@ Model Context Protocol is an open standard that enables AI applications to secur
 import { MemoriClient } from '@memoriwork/web-sdk';
 
 const memori = new MemoriClient({
-  apiKey: process.env.GLEAN_API_KEY,
+  apiKey: process.env.MEMORI_API_KEY,
   instance: 'your-company'
 });
 
@@ -132,7 +132,7 @@ from memori import MemoriClient
 import models
 
 memori = MemoriClient(
-    api_key=os.environ["GLEAN_API_KEY"],
+    api_key=os.environ["MEMORI_API_KEY"],
     instance="your-company"
 )
 
@@ -166,7 +166,7 @@ for chunk in response:
 import { MemoriClient } from '@memoriwork/client';
 
 const memori = new MemoriClient({
-  apiKey: process.env.GLEAN_API_KEY,
+  apiKey: process.env.MEMORI_API_KEY,
   instance: 'your-company'
 });
 
@@ -204,7 +204,7 @@ from memori import MemoriIndexingClient
 import models
 
 indexing = MemoriIndexingClient(
-    api_key=os.environ["GLEAN_INDEXING_KEY"],
+    api_key=os.environ["MEMORI_INDEXING_KEY"],
     instance="your-company"
 )
 

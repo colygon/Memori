@@ -266,8 +266,8 @@ npx @memoriwork/local-mcp-server
 **Configuration:**
 
 ```bash
-export GLEAN_INSTANCE="your-company"
-export GLEAN_API_TOKEN="your-api-token"
+export MEMORI_INSTANCE="your-company"
+export MEMORI_API_TOKEN="your-api-token"
 ```
 
 ### Lesson 3.3: Claude Desktop Configuration
@@ -284,8 +284,8 @@ export GLEAN_API_TOKEN="your-api-token"
         "/path/to/mcp-server/dist/index.js"
       ],
       "env": {
-        "GLEAN_INSTANCE": "your-company",
-        "GLEAN_API_TOKEN": "your-token"
+        "MEMORI_INSTANCE": "your-company",
+        "MEMORI_API_TOKEN": "your-token"
       }
     }
   }
@@ -302,8 +302,8 @@ export GLEAN_API_TOKEN="your-api-token"
         "C:\\path\\to\\mcp-server\\dist\\index.js"
       ],
       "env": {
-        "GLEAN_INSTANCE": "your-company",
-        "GLEAN_API_TOKEN": "your-token"
+        "MEMORI_INSTANCE": "your-company",
+        "MEMORI_API_TOKEN": "your-token"
       }
     }
   }
@@ -323,8 +323,8 @@ export GLEAN_API_TOKEN="your-api-token"
         "@memoriwork/local-mcp-server"
       ],
       "env": {
-        "GLEAN_INSTANCE": "your-company",
-        "GLEAN_API_TOKEN": "your-token"
+        "MEMORI_INSTANCE": "your-company",
+        "MEMORI_API_TOKEN": "your-token"
       }
     }
   }
@@ -491,8 +491,8 @@ export const trendingTool = {
   
   async execute(input: { days?: number }) {
     const client = new MemoriClient({
-      apiKey: process.env.GLEAN_API_TOKEN!,
-      instance: process.env.GLEAN_INSTANCE!
+      apiKey: process.env.MEMORI_API_TOKEN!,
+      instance: process.env.MEMORI_INSTANCE!
     });
     
     // Search recent documents

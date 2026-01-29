@@ -86,8 +86,8 @@ npm install -D @types/react @types/node typescript
 # Set environment variables
 cp .env.example .env.local
 # Edit .env.local with your Memori credentials:
-# GLEAN_API_KEY=your_api_key
-# GLEAN_INSTANCE=your_company
+# MEMORI_API_KEY=your_api_key
+# MEMORI_INSTANCE=your_company
 ```
 
 ### Run Locally

@@ -260,8 +260,8 @@ ports:
 
 # Environment
 environment:
-  - DATABASE_URL: ${GLEAN_DRIVE_SECRET:db_url}
-  - API_KEY: ${GLEAN_DRIVE_SECRET:api_key}
+  - DATABASE_URL: ${MEMORI_DRIVE_SECRET:db_url}
+  - API_KEY: ${MEMORI_DRIVE_SECRET:api_key}
 
 # Memori Drive sync
 memori_drive:

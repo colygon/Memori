@@ -111,8 +111,8 @@ print(f"\nSearch result:\n{result}")
 **Configuration:**
 
 ```bash
-export GLEAN_INSTANCE="your-company"
-export GLEAN_API_TOKEN="your-token"
+export MEMORI_INSTANCE="your-company"
+export MEMORI_API_TOKEN="your-token"
 export OPENAI_API_KEY="your-openai-key"
 ```
 
@@ -536,8 +536,8 @@ def search_recent_docs(query: str, days: int = 7) -> str:
         Formatted search results from the last N days
     """
     client = MemoriClient(
-        api_key=os.environ["GLEAN_API_TOKEN"],
-        instance=os.environ["GLEAN_INSTANCE"]
+        api_key=os.environ["MEMORI_API_TOKEN"],
+        instance=os.environ["MEMORI_INSTANCE"]
     )
     
     from datetime import datetime, timedelta
@@ -584,8 +584,8 @@ def find_team_experts(topic: str, department: str = None) -> str:
         List of expert employees with their contact info
     """
     client = MemoriClient(
-        api_key=os.environ["GLEAN_API_TOKEN"],
-        instance=os.environ["GLEAN_INSTANCE"]
+        api_key=os.environ["MEMORI_API_TOKEN"],
+        instance=os.environ["MEMORI_INSTANCE"]
     )
     
     # Search for relevant documents authored by topic experts

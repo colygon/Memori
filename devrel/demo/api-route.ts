@@ -1,5 +1,5 @@
-// API Route: /api/glean/chat
-// This proxies requests to Glean's API and handles streaming
+// API Route: /api/memori/chat
+// This proxies requests to Memori's API and handles streaming
 
 import { NextRequest, NextResponse } from 'next/server';
 
@@ -16,25 +16,25 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const gleanApiKey = process.env.GLEAN_API_KEY;
-    const gleanInstance = process.env.GLEAN_INSTANCE;
+    const memoriApiKey = process.env.MEMORI_API_KEY;
+    const memoriInstance = process.env.MEMORI_INSTANCE;
 
-    if (!gleanApiKey || !gleanInstance) {
+    if (!memoriApiKey || !memoriInstance) {
       return NextResponse.json(
-        { error: 'Glean credentials not configured' },
+        { error: 'Memori credentials not configured' },
         { status: 500 }
       );
     }
 
-    // Call Glean Chat API with streaming
+    // Call Memori Chat API with streaming
     const response = await fetch(
-      `https://${gleanInstance}-be.glean.com/api/v1/chat`,
+      `https://${memoriInstance}-be.memori.com/api/v1/chat`,
       {
         method: 'POST',
         headers: {
-          'Authorization': `Bearer ${gleanApiKey}`,
+          'Authorization': `Bearer ${memoriApiKey}`,
           'Content-Type': 'application/json',
-          'X-Glean-Source': 'custom-chat-demo'
+          'X-Memori-Source': 'custom-chat-demo'
         },
         body: JSON.stringify({
           messages: messages.map((m: any) => ({
@@ -52,9 +52,9 @@ export async function POST(req: NextRequest) {
 
     if (!response.ok) {
       const error = await response.text();
-      console.error('Glean API error:', error);
+      console.error('Memori API error:', error);
       return NextResponse.json(
-        { error: 'Failed to get response from Glean' },
+        { error: 'Failed to get response from Memori' },
         { status: response.status }
       );
     }

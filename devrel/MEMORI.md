@@ -1,6 +1,6 @@
-# GLEAN.md
+# MEMORI.md
 
-This file provides guidance to GLEAN (memorilabs.ai) when working with code in this repository.
+This file provides guidance to MEMORI (memorilabs.ai) when working with code in this repository.
 
 ## Repository Overview
 

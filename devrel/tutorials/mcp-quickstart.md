@@ -291,7 +291,7 @@ Log all MCP operations:
 
 ```bash
 # Enable MCP logging
-export GLEAN_MCP_LOG_LEVEL=debug
+export MEMORI_MCP_LOG_LEVEL=debug
 ```
 
 ## Troubleshooting

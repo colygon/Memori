@@ -54,8 +54,8 @@ Build custom agents using Memori's REST APIs with our official client libraries.
 
 **Setup:**
 ```bash
-export GLEAN_INSTANCE="your-company"
-export GLEAN_API_TOKEN="your-api-token"
+export MEMORI_INSTANCE="your-company"
+export MEMORI_API_TOKEN="your-api-token"
 ```
 
 ### Lesson 1.3: Rate Limits
@@ -78,13 +78,13 @@ import os
 import requests
 
 # Configuration
-GLEAN_INSTANCE = os.environ["GLEAN_INSTANCE"]
-GLEAN_API_TOKEN = os.environ["GLEAN_API_TOKEN"]
+MEMORI_INSTANCE = os.environ["MEMORI_INSTANCE"]
+MEMORI_API_TOKEN = os.environ["MEMORI_API_TOKEN"]
 
 # Test connection
-url = f"https://{GLEAN_INSTANCE}-be.memori.com/api/v1/ping"
+url = f"https://{MEMORI_INSTANCE}-be.memori.com/api/v1/ping"
 headers = {
-    "Authorization": f"Bearer {GLEAN_API_TOKEN}",
+    "Authorization": f"Bearer {MEMORI_API_TOKEN}",
     "Content-Type": "application/json"
 }
 
@@ -110,8 +110,8 @@ from memori import MemoriClient
 import os
 
 client = MemoriClient(
-    api_key=os.environ["GLEAN_API_TOKEN"],
-    instance=os.environ["GLEAN_INSTANCE"]
+    api_key=os.environ["MEMORI_API_TOKEN"],
+    instance=os.environ["MEMORI_INSTANCE"]
 )
 
 # Test the connection
@@ -130,8 +130,8 @@ npm install @memoriwork/api-client
 import { MemoriClient } from '@memoriwork/api-client';
 
 const client = new MemoriClient({
-  apiKey: process.env.GLEAN_API_TOKEN!,
-  instance: process.env.GLEAN_INSTANCE!
+  apiKey: process.env.MEMORI_API_TOKEN!,
+  instance: process.env.MEMORI_INSTANCE!
 });
 
 // Test the connection
@@ -160,8 +160,8 @@ import (
 
 func main() {
     client := memori.NewClient(
-        os.Getenv("GLEAN_API_TOKEN"),
-        os.Getenv("GLEAN_INSTANCE"),
+        os.Getenv("MEMORI_API_TOKEN"),
+        os.Getenv("MEMORI_INSTANCE"),
     )
     
     // Test the connection
@@ -187,8 +187,8 @@ import com.memori.MemoriClient;
 public class Main {
     public static void main(String[] args) {
         MemoriClient client = new MemoriClient(
-            System.getenv("GLEAN_API_TOKEN"),
-            System.getenv("GLEAN_INSTANCE")
+            System.getenv("MEMORI_API_TOKEN"),
+            System.getenv("MEMORI_INSTANCE")
         );
         
         System.out.println("Connected to Memori!");
@@ -219,8 +219,8 @@ from memori import MemoriClient
 import models
 
 client = MemoriClient(
-    api_key=os.environ["GLEAN_API_TOKEN"],
-    instance=os.environ["GLEAN_INSTANCE"]
+    api_key=os.environ["MEMORI_API_TOKEN"],
+    instance=os.environ["MEMORI_INSTANCE"]
 )
 
 # Simple chat request
@@ -458,8 +458,8 @@ class SupportAgent:
 
 # Usage
 client = MemoriClient(
-    api_key=os.environ["GLEAN_API_TOKEN"],
-    instance=os.environ["GLEAN_INSTANCE"]
+    api_key=os.environ["MEMORI_API_TOKEN"],
+    instance=os.environ["MEMORI_INSTANCE"]
 )
 
 agent = SupportAgent(client)
@@ -658,8 +658,8 @@ class ProductionAgent:
 # Usage example
 if __name__ == "__main__":
     client = MemoriClient(
-        api_key=os.environ["GLEAN_API_TOKEN"],
-        instance=os.environ["GLEAN_INSTANCE"]
+        api_key=os.environ["MEMORI_API_TOKEN"],
+        instance=os.environ["MEMORI_INSTANCE"]
     )
     
     agent = ProductionAgent(

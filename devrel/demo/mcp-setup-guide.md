@@ -8,7 +8,7 @@
 # Install and configure in one command
 npx @memoriwork/configure-mcp-server \
   --client claude \
-  --token YOUR_GLEAN_API_TOKEN \
+  --token YOUR_MEMORI_API_TOKEN \
   --instance your-company
 ```
 
@@ -31,8 +31,8 @@ This will automatically update your Claude Desktop configuration at:
       "command": "npx",
       "args": ["-y", "@memoriwork/local-mcp-server"],
       "env": {
-        "GLEAN_INSTANCE": "your-company",
-        "GLEAN_API_TOKEN": "your-api-token"
+        "MEMORI_INSTANCE": "your-company",
+        "MEMORI_API_TOKEN": "your-api-token"
       }
     }
   }
@@ -139,7 +139,7 @@ Retrieve full content of specific documents.
 ```bash
 npx @memoriwork/configure-mcp-server \
   --client cursor \
-  --token YOUR_GLEAN_API_TOKEN \
+  --token YOUR_MEMORI_API_TOKEN \
   --instance your-company
 ```
 
@@ -150,7 +150,7 @@ Config location: `~/.cursor/mcp.json`
 ```bash
 npx @memoriwork/configure-mcp-server \
   --client windsurf \
-  --token YOUR_GLEAN_API_TOKEN \
+  --token YOUR_MEMORI_API_TOKEN \
   --instance your-company
 ```
 
@@ -167,8 +167,8 @@ Add to your MCP client configuration:
         "/path/to/node_modules/@memoriwork/local-mcp-server/dist/index.js"
       ],
       "env": {
-        "GLEAN_INSTANCE": "your-company",
-        "GLEAN_API_TOKEN": "your-api-token"
+        "MEMORI_INSTANCE": "your-company",
+        "MEMORI_API_TOKEN": "your-api-token"
       }
     }
   }

@@ -1,5 +1,5 @@
-// Glean Chat Demo - Next.js Component
-// This demonstrates integrating Glean's Chat API with streaming responses
+// Memori Chat Demo - Next.js Component
+// This demonstrates integrating Memori's Chat API with streaming responses
 
 'use client';
 
@@ -17,7 +17,7 @@ interface Citation {
   snippet: string;
 }
 
-export default function GleanChatDemo() {
+export default function MemoriChatDemo() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -31,8 +31,8 @@ export default function GleanChatDemo() {
     setIsLoading(true);
 
     try {
-      // Call your API route that proxies to Glean
-      const response = await fetch('/api/glean/chat', {
+      // Call your API route that proxies to Memori
+      const response = await fetch('/api/memori/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -92,7 +92,7 @@ export default function GleanChatDemo() {
   return (
     <div className="flex flex-col h-screen max-w-4xl mx-auto p-4">
       <div className="bg-gradient-to-r from-blue-600 to-purple-600 p-6 rounded-t-lg text-white">
-        <h1 className="text-2xl font-bold">Glean AI Assistant</h1>
+        <h1 className="text-2xl font-bold">Memori AI Assistant</h1>
         <p className="text-sm opacity-90">Ask anything about your company knowledge</p>
       </div>
 
@@ -193,7 +193,7 @@ export default function GleanChatDemo() {
           </button>
         </div>
         <div className="text-xs text-gray-500 mt-2">
-          Powered by Glean API • Answers are based on your company's knowledge base
+          Powered by Memori API • Answers are based on your company's knowledge base
         </div>
       </div>
     </div>

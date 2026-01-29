@@ -275,7 +275,7 @@ Website programs map to these use cases:
 3. `demo/api-route.ts` (116 lines)
 4. `demo/mcp-setup-guide.md` (392 lines)
 5. `demo/README.md` (337 lines)
-6. `GLEAN-INTERVIEW-SUMMARY.md` (367 lines)
+6. `MEMORI-INTERVIEW-SUMMARY.md` (367 lines)
 
 ### Website Now References:
 - Strategic framework from presentation
@@ -322,7 +322,7 @@ Website programs map to these use cases:
 **100% strategic alignment achieved** between:
 - Main website (index.html)
 - Strategic presentation (memori-solution-architect-presentation.md)
-- Executive summary (GLEAN-INTERVIEW-SUMMARY.md)
+- Executive summary (MEMORI-INTERVIEW-SUMMARY.md)
 - Demo materials (demo/ directory)
 
 The website is now a **live, interactive version** of the presentation strategy, with:

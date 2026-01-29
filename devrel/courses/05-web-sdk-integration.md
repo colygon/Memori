@@ -115,7 +115,7 @@ import { MemoriSDK } from '@memoriwork/web-sdk';
 const memori = new MemoriSDK({
   instance: 'your-company',
   authMode: 'token',
-  apiToken: process.env.GLEAN_API_TOKEN,
+  apiToken: process.env.MEMORI_API_TOKEN,
   actAs: 'user@company.com'
 });
 

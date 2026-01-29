@@ -162,9 +162,9 @@ pip install python-dotenv
 ```bash
 # .env file
 NVIDIA_API_KEY=nvapi-xxx
-GLEAN_INSTANCE=your-company
-GLEAN_API_TOKEN=memori-xxx
-GLEAN_ACT_AS=user@company.com
+MEMORI_INSTANCE=your-company
+MEMORI_API_TOKEN=memori-xxx
+MEMORI_ACT_AS=user@company.com
 ```
 
 ### 🎯 Lab 2: Setup Development Environment

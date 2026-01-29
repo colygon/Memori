@@ -140,17 +140,17 @@ print(result["output"])
 **Required Environment Variables:**
 
 ```bash
-export GLEAN_INSTANCE="your-company"
-export GLEAN_API_TOKEN="your-api-token"
-export GLEAN_ACT_AS="user@company.com"
+export MEMORI_INSTANCE="your-company"
+export MEMORI_API_TOKEN="your-api-token"
+export MEMORI_ACT_AS="user@company.com"
 export OPENAI_API_KEY="your-openai-key"
 ```
 
 **Environment Variable Details:**
 
-- `GLEAN_INSTANCE` - Your Memori subdomain (e.g., "acme")
-- `GLEAN_API_TOKEN` - API token with `chat` and `search` scopes
-- `GLEAN_ACT_AS` - Email of user whose permissions to use
+- `MEMORI_INSTANCE` - Your Memori subdomain (e.g., "acme")
+- `MEMORI_API_TOKEN` - API token with `chat` and `search` scopes
+- `MEMORI_ACT_AS` - Email of user whose permissions to use
 - `OPENAI_API_KEY` - Your OpenAI API key for the LLM
 
 ### Lesson 2.2: Creating API Tokens
@@ -200,9 +200,9 @@ from langchain.prompts import ChatPromptTemplate
 from langchain_memori import MemoriSearchTool
 
 # Configuration
-os.environ["GLEAN_INSTANCE"] = "your-company"
-os.environ["GLEAN_API_TOKEN"] = "your-token"
-os.environ["GLEAN_ACT_AS"] = "user@company.com"
+os.environ["MEMORI_INSTANCE"] = "your-company"
+os.environ["MEMORI_API_TOKEN"] = "your-token"
+os.environ["MEMORI_ACT_AS"] = "user@company.com"
 os.environ["OPENAI_API_KEY"] = "your-openai-key"
 
 # Setup
