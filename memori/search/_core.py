@@ -4,7 +4,13 @@ import logging
 from collections.abc import Callable, Mapping
 from typing import Any, cast
 
-from memori.search._types import FactCandidate, FactId, FactSearchResult
+from memori.search._types import (
+    FactCandidate,
+    FactId,
+    FactSearchResult,
+    SearchCandidate,
+    SearchDebug,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -171,7 +177,8 @@ def search_entity_facts_core(
     ],
     lexical_scores_for_ids: Callable[..., dict[FactId, float]],
     dense_lexical_weights: Callable[..., tuple[float, float]],
-) -> list[FactSearchResult]:
+    debug: bool = False,
+) -> list[FactSearchResult] | tuple[list[FactSearchResult], SearchDebug]:
     idx_to_original_id: dict[int, FactId] = {}
     if fact_candidates is not None:
         (
@@ -184,13 +191,13 @@ def search_entity_facts_core(
             fact_candidates, limit=limit, query_text=query_text
         )
         if not candidate_ids:
-            return []
+            return ([], SearchDebug([], 0, 0)) if debug else []
     else:
         results = _get_embeddings_rows(
             entity_fact_driver, entity_id=entity_id, embeddings_limit=embeddings_limit
         )
         if not results:
-            return []
+            return ([], SearchDebug([], 0, 0)) if debug else []
 
         embeddings = [(row["id"], row["content_embedding"]) for row in results]
         cand_limit = _candidate_limit(
@@ -199,7 +206,7 @@ def search_entity_facts_core(
         similar = find_similar_embeddings(embeddings, query_embedding, cand_limit)
         if not similar:
             logger.debug("No similar embeddings found")
-            return []
+            return ([], SearchDebug([], 0, 0)) if debug else []
 
         candidate_ids = [fact_id for fact_id, _ in similar]
         similarities_map = dict(similar)
@@ -253,4 +260,30 @@ def search_entity_facts_core(
         "Returning %d facts with similarity scores", len(facts_with_similarity)
     )
 
-    return facts_with_similarity
+    if not debug:
+        return facts_with_similarity
+
+    selected_ids = set(ordered_ids)
+    candidates: list[SearchCandidate] = []
+    for fid in base_order:
+        original_id = idx_to_original_id.get(fid, fid)
+        content = content_map.get(fid, "")
+        similarity = float(similarities_map.get(fid, 0.0))
+        rank_score = float(rank_score_map.get(fid, similarity))
+        candidates.append(
+            SearchCandidate(
+                id=original_id,
+                content=content,
+                similarity=similarity,
+                rank_score=rank_score,
+                selected=fid in selected_ids,
+            )
+        )
+
+    debug_info = SearchDebug(
+        candidates=candidates,
+        candidates_considered=len(base_order),
+        candidates_returned=len(facts_with_similarity),
+    )
+
+    return facts_with_similarity, debug_info

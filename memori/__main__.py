@@ -14,6 +14,7 @@ from typing import Any
 from memori._cli import Cli
 from memori._config import Config
 from memori._setup import Manager as SetupManager
+from memori._inspect import Manager as InspectManager
 from memori.api._quota import Manager as ApiQuotaManager
 from memori.api._sign_up import Manager as ApiSignUpManager
 from memori.storage.cockroachdb._cluster_manager import (
@@ -46,6 +47,12 @@ def main():
             "params": ["<email_address>"],
             "obj": ApiSignUpManager,
         },
+        "inspect": {
+            "description": "Inspect memories for an entity",
+            "params": [],
+            "obj": InspectManager,
+            "variadic": True,
+        },
     }
 
     if len(sys.argv) <= 1 or sys.argv[1] not in options:
@@ -65,7 +72,7 @@ def main():
         option = options[sys.argv[1]]
         params = option["params"]
         obj_cls = option["obj"]
-        if len(params) > 0:
+        if len(params) > 0 and not option.get("variadic", False):
             if len(sys.argv) != 2 + len(params):
                 obj_cls(Config()).usage()
                 cli.newline()

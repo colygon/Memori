@@ -35,3 +35,35 @@ class FactSearchResult:
             "rank_score": self.rank_score,
             "date_created": self.date_created,
         }
+
+
+@dataclass(frozen=True)
+class SearchCandidate:
+    id: FactId
+    content: str
+    similarity: float
+    rank_score: float
+    selected: bool
+
+
+@dataclass(frozen=True)
+class SearchDebug:
+    candidates: list[SearchCandidate]
+    candidates_considered: int
+    candidates_returned: int
+
+    def to_dict(self) -> dict[str, object]:
+        return {
+            "candidates_considered": self.candidates_considered,
+            "candidates_returned": self.candidates_returned,
+            "candidates": [
+                {
+                    "id": c.id,
+                    "content": c.content,
+                    "similarity": c.similarity,
+                    "rank_score": c.rank_score,
+                    "selected": c.selected,
+                }
+                for c in self.candidates
+            ],
+        }

@@ -137,8 +137,8 @@ class Memori:
         self.config.session_id = id
         return self
 
-    def recall(self, query: str, limit: int = 5):
-        return Recall(self.config).search_facts(query, limit)
+    def recall(self, query: str, limit: int = 5, *, debug: bool = False):
+        return Recall(self.config).search_facts(query, limit, debug=debug)
 
     def close(self) -> None:
         """Close the underlying storage connection/session, if any.

@@ -7,7 +7,7 @@ from memori.search._core import (
 )
 from memori.search._faiss import find_similar_embeddings
 from memori.search._lexical import dense_lexical_weights, lexical_scores_for_ids
-from memori.search._types import FactCandidate, FactSearchResult
+from memori.search._types import FactCandidate, FactSearchResult, SearchDebug
 
 
 def search_facts(
@@ -19,7 +19,8 @@ def search_facts(
     *,
     query_text: str | None = None,
     candidates: list[FactCandidate] | None = None,
-) -> list[FactSearchResult]:
+    debug: bool = False,
+) -> list[FactSearchResult] | tuple[list[FactSearchResult], SearchDebug]:
     """
     Unified search entrypoint.
 
@@ -27,7 +28,7 @@ def search_facts(
     - Pre-scored mode: provide candidates (list[FactCandidate])
     """
     if candidates is not None:
-        return search_entity_facts_core(
+        result = search_entity_facts_core(
             entity_fact_driver=None,
             entity_id=0,
             query_embedding=[],
@@ -38,7 +39,9 @@ def search_facts(
             find_similar_embeddings=find_similar_embeddings,
             lexical_scores_for_ids=lexical_scores_for_ids,
             dense_lexical_weights=dense_lexical_weights,
+            debug=debug,
         )
+        return result
 
     if entity_fact_driver is None:
         raise ValueError("entity_fact_driver is required when candidates is not set")
@@ -47,7 +50,7 @@ def search_facts(
     if query_embedding is None:
         raise ValueError("query_embedding is required when candidates is not set")
 
-    return search_entity_facts_core(
+    result = search_entity_facts_core(
         entity_fact_driver,
         entity_id,
         query_embedding,
@@ -57,4 +60,6 @@ def search_facts(
         find_similar_embeddings=find_similar_embeddings,
         lexical_scores_for_ids=lexical_scores_for_ids,
         dense_lexical_weights=dense_lexical_weights,
+        debug=debug,
     )
+    return result
